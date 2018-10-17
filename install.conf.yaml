@@ -12,4 +12,7 @@
 
 - shell:
   - './scripts/base.sh'
+  - 'mkdir -p ~/bin'
+  - 'curl https://raw.githubusercontent.com/recoder/bash-git-prompt/master/parrt-prompt.py > ~/bin/parrt-prompt && chmod +x ~/bin/parrt-prompt'
+  - [sed -i '/^PROMPT_COMMAND/d' ~/.bashrc && echo -ne PROMPT_COMMAND='PS1="\`python ~/bin/parrt-prompt\`"'\\\n >> ~/.bashrc]
 #  - [git submodule update --init --recursive, Installing submodules]

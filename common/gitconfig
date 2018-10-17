@@ -53,3 +53,7 @@
 	autocorrect = 60
 [core]
 	excludesfile = ~/.gitignore
+[push]
+	default = simple
+[credential]
+	helper = store
