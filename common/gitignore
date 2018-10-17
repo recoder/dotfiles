@@ -1,0 +1,17 @@
+# Backups
+*~
+*.bak
+
+# System artifacts
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editor
+*.sublime-project
+*.sublime-workspace
+
+# Binaries
+.hg
+*.pyc
+*.rpm

@@ -1,0 +1,55 @@
+[user]
+	name = ReCoder
+	email = recoder@gmail.com
+[alias]
+	hdiff = !git diff --color | diff-highlight | less -R
+	hdiffs = !git diff --staged --color | diff-highlight | less -R
+	st = status --short --branch
+	ls = log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate
+	ll = log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --numstat
+	lnc = log --pretty=format:\"%h\\\\ %s\\\\ [%cn]\"
+	lds = log --pretty=format:\"%C(yellow)%h\\\\ %ad%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --date=short
+	le = log --oneline --decorate
+	logtree = log --graph --oneline --decorate --all
+	diffs = diff --staged
+	wdiff = diff -w --word-diff-regex=. --color-words -U0
+	graph = log --graph --all --decorate --stat --date=iso
+	filelog = log -u ''
+	last = !git ll -1
+	last-diff = diff --cached HEAD^
+	show-commit = "!f() { git diff \"$1\"^..\"$1\"; }; f"
+	show-stash = stash show -p stash@{0}
+	branch-name = !git rev-parse --abbrev-ref HEAD
+	prune = fetch --prune
+	catchup = !git fetch upstream && git rebase upstream/$(git branch-name) --autostash
+	stash-all = stash save --include-untracked
+	amend = commit -a --amend
+	commend = commit --amend --no-edit
+	unstage = reset HEAD --
+	please = push --force-with-lease
+	undo-commit = reset --soft HEAD~1
+	fixupfile = "!f() { git commit --fixup=$(git log --all --full-history -1 --format=format:%h -- \"$1\") \"$@\";}; f"
+	giveup = "!git fetch upstream master; git reset --hard upstream/master; echo now do \\\"git push origin master --force\\\""
+	wipe = !git add -A && git commit -qm \"SAVEPOINT\" && git reset HEAD~1 --hard
+	fuck = "!git clean -d -x -f; git reset --hard"
+	fire = !git add -A && git commit -m \"FIRE FIRE FIRE\" && git push origin fire-branch
+	stats = shortlog -sn --since='10 weeks' --until='2 weeks
+	overview = log --all --since='2 weeks' --oneline --no-merges
+	rank = shortlog -sn --no-merges
+	recap = log --all --oneline --no-merges --author=recoder@gmail.com
+	today = log --since=00:00:00 --all --no-merges --oneline --author=recoder@gmail.com
+	aliases = !git config --list | grep ^alias\\\\. | cut -c 7- | grep -Pi --color \"^.*?=\"
+[color]
+	ui = true
+[merge]
+	ff = only
+	conflictstyle = diff3
+[rebase]
+	autostash = true
+	autosquash = true
+[diff]
+	indentHeuristic = on
+[help]
+	autocorrect = 60
+[core]
+	excludesfile = ~/.gitignore

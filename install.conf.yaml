@@ -1,0 +1,15 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+#    ~/.dotfiles: ''
+    ~/.tmux.conf: common/tmux.conf
+    ~/.gitignore: common/gitignore
+    ~/.gitconfig: common/gitconfig
+
+- shell:
+  - './scripts/base.sh'
+#  - [git submodule update --init --recursive, Installing submodules]
